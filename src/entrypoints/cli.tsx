@@ -1,6 +1,10 @@
 #!/usr/bin/env bun
 import { feature } from 'bun:bundle'
 
+// Import and enable fetch interceptor for debugging network requests
+import { interceptFetch } from '../proxy/fetchInterceptor.js'
+interceptFetch()
+
 // Runtime fallback for MACRO.* when not injected by build/dev defines.
 // This happens when running cli.tsx directly (not via `bun run dev` or built dist/).
 if (typeof globalThis.MACRO === 'undefined') {
